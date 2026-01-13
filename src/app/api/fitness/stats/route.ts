@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { auth } from "@/auth";
 import { dbConnect } from "@/lib/mongoose";
 import { Workout } from "@/models/Workout";
+import mongoose from "mongoose";
 
 // GET - Estadísticas de fitness
 export async function GET(req: Request) {
@@ -20,11 +21,13 @@ export async function GET(req: Request) {
     startDate.setDate(startDate.getDate() - days);
     startDate.setHours(0, 0, 0, 0);
 
+    const ownerId = new mongoose.Types.ObjectId(session.user.id);
+
     // Estadísticas del período
     const stats = await Workout.aggregate([
       {
         $match: {
-          ownerId: session.user.id,
+          ownerId: ownerId,
           date: { $gte: startDate },
         },
       },
@@ -43,7 +46,7 @@ export async function GET(req: Request) {
     const byType = await Workout.aggregate([
       {
         $match: {
-          ownerId: session.user.id,
+          ownerId: ownerId,
           date: { $gte: startDate },
         },
       },
@@ -60,7 +63,7 @@ export async function GET(req: Request) {
     const byDayOfWeek = await Workout.aggregate([
       {
         $match: {
-          ownerId: session.user.id,
+          ownerId: ownerId,
           date: { $gte: startDate },
         },
       },

@@ -97,6 +97,18 @@ export default async function DashboardPage() {
             >
               Fitness
             </Link>
+            <Link
+              href="/journal"
+              className="py-4 px-1 border-b-2 border-transparent text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300 font-medium text-sm"
+            >
+              Journal
+            </Link>
+            <Link
+              href="/finance"
+              className="py-4 px-1 border-b-2 border-transparent text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300 font-medium text-sm"
+            >
+              Finanzas
+            </Link>
           </div>
         </div>
       </nav>
@@ -149,7 +161,7 @@ export default async function DashboardPage() {
         </div>
 
         {/* Quick actions */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
           <Link
             href="/tasks/new"
             className="flex items-center gap-3 p-4 bg-white dark:bg-gray-800 rounded-xl shadow-sm hover:shadow-md transition"
@@ -178,6 +190,16 @@ export default async function DashboardPage() {
             <div>
               <p className="font-medium text-gray-900 dark:text-white">Ver Sprint</p>
               <p className="text-sm text-gray-500">Board Kanban</p>
+            </div>
+          </Link>
+          <Link
+            href="/journal/new"
+            className="flex items-center gap-3 p-4 bg-white dark:bg-gray-800 rounded-xl shadow-sm hover:shadow-md transition"
+          >
+            <span className="text-2xl">📓</span>
+            <div>
+              <p className="font-medium text-gray-900 dark:text-white">Escribir Journal</p>
+              <p className="text-sm text-gray-500">Reflexión diaria</p>
             </div>
           </Link>
         </div>
